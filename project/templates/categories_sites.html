@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% from "forms_macro.html" import render_field %}
+
+{% block content %}
+
+<nav class="navbar navbar-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Categories</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('categories.breakfast') }}">Breakfast</a></li>
+        <li><a href="{{ url_for('categories.dinner') }}">Dinner</a></li>
+        <li><a href="{{ url_for('categories.baking') }}">Baking/Snacks</a></li>
+        <li><a href="{{ url_for('categories.summer') }}">Summer</a></li>
+        <li><a href="{{ url_for('categories.winter') }}">Winter</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="page-header">
+  <h2>Recipes</h2>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <table class="table table-striped" id="owned_stock_table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for recipe in recipes %}
+        <tr>
+          <td>{{ recipe.recipe_title }}</td>
+          <td>{{ recipe.recipe_description }}</td>
+          <td><a href="{{ url_for('recipes.recipes_details', recipe_id=recipe.id) }}" class="btn btn-info" role="button">Details</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% from "forms_macro.html" import render_field %}
+{% block content %}
+<div class="add_recipe">
+  <div class="page-header">
+    <h2>Please Add a New Recipe</h2>
+  </div>
+  <form action="{{ url_for('recipes.add_recipe') }}" method="post">
+    {{ form.csrf_token }}
+    <dl>
+      {{ render_field(form.recipe_title, placeholder="Title") }}
+      {{ render_field(form.recipe_description, placeholder="Description") }}
+      {{ render_field(form.recipe_instruction, placeholder="Instructions") }}
+      {{ render_field(form.category_id, placeholder="Category") }}
+      {{ render_field(form.ingredient_id, placeholder="Ingredients") }}
+
+    </dl>
+
+    <button class="btn btn-sm btn-success" type="submit">Create New Recipe</button>
+  </form>
+  <br>
+  <br>
+  <p><em>Missing a ingredient? </em><a href="{{ url_for('ingredients.add') }}">Insert a ingredient here!</a></p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="page-header">
+  <h2>Recipes</h2>
+</div>
+<div class="row">
+    <table class="table table-striped" id="owned_stock_table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Instructions</th>
+          <th>Created On</th>
+          <th>Modified On</th>
+          <th>Ingredients</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ recipe.recipe_title }}</td>
+          <td>{{ recipe.recipe_instruction }}</td>
+          <td>{{ recipe.created_on }}</td>
+          <td>{{ recipe.modified_on }}</td>
+          {% for index in index %}
+            {% if recipe.id==index.recipe_id %}
+              {% for ing in ingredients %}
+                {% if ing.id==index.ing_id %}
+                  <td>{{ ing.name }}</td>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+{% endblock %}

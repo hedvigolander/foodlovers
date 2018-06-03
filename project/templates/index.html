@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% from "forms_macro.html" import render_field %}
+
+{% block content %}
+<style>
+
+
+</style>
+
+    <br>
+    <br>
+    <div align="center">
+    <h1>WELCOME TO FOODLOVERS</h1>
+    <br>
+    {% if current_user.is_authenticated %}
+    <h4>Start writing some recipes or check out the other users' recipes</h4>
+    <br>
+    <h4>If you have any questions or comments send an email to foodlovers.web@gmail.com</h4>
+    {% else %}
+    <h4>Log in or register to take part of our community</h4>
+    {% endif %}
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+          <img src="../static/mat.jpg" alt="Mat" style="height:400px; width:600px;">
+
+          <div class="caption">
+          </div>
+
+
+    </div>
+    <div class="col-md-6">
+
+          <img src="../static/mat2.jpg" alt="Mat" style="height:400px; width:600px;">
+          <div class="caption">
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div align="center">
+  {% if current_user.is_authenticated %}
+  <br>
+  {% else %}
+  <br>
+<h6>To contact us send an email to foodlovers.web@gmail.com</h6>
+{% endif %}
+</div>
+
+{% endblock %}

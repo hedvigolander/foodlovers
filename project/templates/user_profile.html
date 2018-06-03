@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% from "forms_macro.html" import render_field %}
+
+{% block content %}
+
+<div class="user-profile">
+  <div class="page-header">
+    <h2>User Profile</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Username</div>
+        <div class="panel-body">{{current_user.username}}</div>
+        <div class="panel-heading">Email Address</div>
+        <div class="panel-body">{{current_user.email}}</div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">Recipes</div>
+          <div class="panel-body"><a href="{{ url_for('recipes.user_recipes') }}">My Recipes</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

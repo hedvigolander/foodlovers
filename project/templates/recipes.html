@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="page-header">
+  <h2>Recipes</h2>
+</div>
+<div class="row">
+    <table class="table table-striped" id="owned_stock_table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Creator</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for recipe in recipes %}
+        <tr>
+          <td>{{ recipe.recipe_title }}</td>
+          <td>{{ recipe.recipe_description }}</td>
+          {% if recipe.category_id==1 %}
+          <td>Breakfast</td>
+          {% elif recipe.category_id==2 %}
+          <td>Dinner</td>
+          {% elif recipe.category_id==3 %}
+          <td>Baking/Snacks</td>
+          {% elif recipe.category_id==4 %}
+          <td>Summer</td>
+          {% elif recipe.category_id==5 %}
+          <td>Winter</td>
+          {% endif %}
+          {% for user in users %}
+            {% if recipe.user_id==user.id %}
+            <td>{{ user.username }}</td>
+            {% endif %}
+          {% endfor %}
+          <td><a href="{{ url_for('recipes.recipes_details', recipe_id=recipe.id) }}" class="btn btn-info" role="button">Details</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

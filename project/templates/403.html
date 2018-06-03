@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div align="center">
+  <h1>Forbidden</h1>
+  <br>
+  <h4>You don't have the permission to access the this site</h4>
+  <br>
+  <h4><a href="{{ url_for('home.index') }}">Return to start site</a></h4>
+</div>
+{% endblock %}
