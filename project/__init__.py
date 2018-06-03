@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
 from config import Config, DevelopmentConfig, StagingConfig, DevelopmentConfig
+from flask.ext.heroku import Heroku
 import os
 
 app = Flask(__name__)
@@ -21,6 +22,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 mail = Mail(app)
 csrf = CSRFProtect(app)
+heroku = Heroku(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "users.login"
