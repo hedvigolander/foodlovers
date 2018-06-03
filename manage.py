@@ -2,8 +2,9 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from project import app, db
 import os
+from config import Config, DevelopmentConfig, StagingConfig, DevelopmentConfig
 
-
+app.config.from_object(DevelopmentConfig)
 # Initializing the manager
 manager = Manager(app)
 
