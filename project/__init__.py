@@ -4,12 +4,13 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
+from config import Config, DevelopmentConfig, StagingConfig, DevelopmentConfig
 import os
 
 app = Flask(__name__)
 
 
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(DevelopmentConfig)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
 
