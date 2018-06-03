@@ -4,7 +4,6 @@ from project import app, db
 import os
 
 
-app.config.from_object(os.environ['APP_SETTINGS'])
 # Initializing the manager
 manager = Manager(app)
 
